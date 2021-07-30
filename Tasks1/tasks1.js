@@ -8,7 +8,7 @@ for (var i = 0; i < num; i++) {
 }
 
 
-var repeat = 0, distinct = [], check, mostRepeated = [], leastRepeated = [];
+var repeat = 0, x = 0, distinct = [], check, mostRepeated = [], leastRepeated = [];
 
 for (i = 0; i < wordsArray.length; i++) {
     check = 1;
