@@ -1,40 +1,51 @@
-var num = prompt("Enter number of words");
+var num = prompt("Enter the number of words");
 
-var wordsArray = [];
+var wordsArray = [], distinct = [];
 
-//Taking words
 for (var i = 0; i < num; i++) {
-    wordsArray.push(prompt("Enter the " + (i + 1) + " word"));
-}
 
+    var take = prompt("Enter the " + (i + 1) + " word");
+    var check = false;
 
-var repeat = 0, distinct = [], check, mostRepeated = [], leastRepeated = [];
-
-for (i = 0; i < wordsArray.length; i++) {
-    check = 1;
     for (var j = 0; j < wordsArray.length; j++) {
-        if ((wordsArray[i] === wordsArray[j]) && (i != j)) {
-            wordsArray.splice(j, 1);
-            repeat++;
-            check++;
+
+        if (take === wordsArray[j]) {
+
+            distinct[j] = distinct[j] + 1;
+            check = true;
+            break;
+
         }
     }
-
-    if (check < 2) {
-        leastRepeated.push(wordsArray[i]);
+    if (!check) {
+        wordsArray.push(take);
+        distinct.push(1);
     }
 
-    distinct.push(check);
 }
 
-console.log(wordsArray);
 
 
+//-----------------------------------------Bonus Starts From Here------------------------
+
+//Taking First Lowest Repeated Word
+var lowWord, lowNo;
+
+for (i = 0; i < wordsArray.length; i++) {
+    if (distinct[i] == 1) {
+        lowWord = wordsArray[i];
+        lowNo = distinct[i];
+        break;
+    }
+}
+
+
+//---------------------------------------Decending Occurance----------------------------
 var maxNo, maxWord, descendingWords = [], descendingNo = [];
 for (i = 0; i < wordsArray.length; i++) {
 
-    maxNo = distinct[0];
-    maxWord = wordsArray[0];
+    maxNo = lowNo;
+    maxWord = lowWord;
 
 
     for (j = wordsArray.length - 1; j >= 0; j--) {
@@ -52,6 +63,10 @@ for (i = 0; i < wordsArray.length; i++) {
 }
 
 
+var mostRepeated = [], leastRepeated = [];
+
+
+//----------------------------------------Most Repeated-----------------------------
 var mostRepeat = descendingNo[0];
 mostRepeated.push(descendingWords[0]);
 
@@ -62,7 +77,19 @@ for (i = 1; i < descendingNo.length; i++) {
 }
 
 
-//Outputs
+//------------------------------------------Least Repeated---------------------------------
+var leastRepeat = descendingNo[descendingNo.length - 1];
+leastRepeated.push(descendingWords[descendingWords.length - 1]);
+
+for (i = descendingNo.length - 2; i >= 0; i--) {
+    if (leastRepeat === descendingNo[i]) {
+        leastRepeated.push(descendingWords[i]);
+    }
+}
+
+
+
+//--------------------------------------------------Outputs-------------------------------------
 console.log("" + descendingWords);
 console.log("" + descendingNo);
 console.log("Most repeated word(s) are:" + mostRepeated);
