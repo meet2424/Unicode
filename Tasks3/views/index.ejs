@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BreakingBad</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>    
+        <h1>BreakingBad</h1>
+        <h2>Want to know about your favorite character just type it</h2>
+        <div class="form">
+            <form action="/" method="POST">
+                <input type="text" placeholder="Enter your favorite character name" name="charName">
+                <button type="submit">Add</button>
+            </form>
+        </div>
+    </header>
+
+    
+    <%  array.forEach(element => { %>
+        <div class="character">
+          <p> <img src="<%= element.img %>" alt="character-img" width="350px" height="350px">  </p>
+          <p> <strong> <h3></strong><%= element.name %>  </h3></p>
+          <p> <strong> Portrayed By: </strong><%= element.portrayed %>  </p>
+          <p> <strong> Nickname: </strong><%= element.nickname %>  </p>
+          <p> <strong> Occupation: </strong><%= element.occupation %></p>
+          <p> <strong> Birthday: </strong><%= element.birthday %></p>
+          <p> <strong> Status: </strong><%= element.status %>  </p>
+        </div>
+    <% }); %>
+
+
+</body>
+<Footer>copyright© 2018 Meet Patel</Footer>
+</html>
