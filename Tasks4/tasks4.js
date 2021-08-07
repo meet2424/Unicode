@@ -86,18 +86,17 @@ app.post("/", function (req, res) {
                 res.redirect("/");
 
             } else {
-                res.write("Error:404")
-                res.write("OHH NO please enter full name ")
-                res.write("For example: Walter(First Name) White(Last Name)")
+                res.write("<h1>Error:404</h1>")
+                res.write("<p>Uh oh! please enter full name </p>")
+                res.write("<p>For example: Walter(First Name)_White(Last Name)</p>")
                 res.send()
             }
 
         })
 
         .catch(function (err) {
-            // console.log(err);
-            res.write("Error:404")
-            res.write("OHH NO please enter a valid character name")
+            res.write("<h1>Error:404</h1>")
+            res.write("<p>Uh oh! please enter a valid character name")
             res.send()
 
         })
